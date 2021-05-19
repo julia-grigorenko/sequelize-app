@@ -1,0 +1,2 @@
+A functional RESTful API using Node.js and Express, which can transmit data to a Postgres database by utilizing Sequelize to translate JavaScript into equatable SQL commands.
+Getting data flowing from a Node.js and Express web application, to a PostgreSQL database with Sequelize as the O.R.M. 
