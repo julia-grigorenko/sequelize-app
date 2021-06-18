@@ -8,3 +8,14 @@ A functional RESTful API using Node.js and Express, which can transmit data to a
 
 * Use migrations to manage the state of database schemas.
 
+* App performs functionality such as getting all users with their associated tasklist, getting a specific user and tasklist, updating a user, and deleting a user.
+
+* Use Cross-env to pass environment variables in npm scripts, which can use to specify a test environment.
+
+* Use tests with Jest and SuperTest for testing routs
+
+
+## Testing commands
+
+* to test api routes `npm run test:routes`
+* to test basic rot rout from app.js `npm run test:basic`

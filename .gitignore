@@ -102,8 +102,11 @@ yarn-error.log
 coverage
 build/
 /man
+*.txt
 .DS_Store
 */.DS_Store
 */*/.DS_Store
 .eslintcache
 */.eslintcache
+
+

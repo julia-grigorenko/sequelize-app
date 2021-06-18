@@ -11,7 +11,8 @@ module.exports = {
             email: 'dou@gmail.com',
             createdAt: new Date(),
             updatedAt: new Date(),
-            password: 'text'
+            password: 'text',
+            role: 'user'
           },
           {
             firstName: 'Mike',
@@ -19,7 +20,8 @@ module.exports = {
             email: 'lisn@gmail.com',
             createdAt: new Date(),
             updatedAt: new Date(),
-            password: 'text1'
+            password: 'text1',
+            role: 'user'
           },
           {
             firstName: 'Sara',
@@ -28,6 +30,7 @@ module.exports = {
             createdAt: new Date(),
             updatedAt: new Date(),
             password: 'text2',
+            role: 'admin'
           },
         ], {});
    

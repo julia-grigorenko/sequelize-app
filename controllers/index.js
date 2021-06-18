@@ -1,18 +1,16 @@
-const { User } = require('../models');
+const { User, Task } = require('../models');
 
-//pathway for creating new user
+//pathway for creating a new user
 const createUser = async (req, res) => {
+    const { firstName, lastName, email, password, role } = req.body;
     try {
-        const user = await User.create(req.body);
+        const user = await User.create({ firstName, lastName, email, password, role });
         return res.status(201).json({
-            user,
+            user
         });
     } catch (error) {
-        return res.status(500).json({ error: error.message })
+        return res.status(500).json({ error: error.message });
     }
-}
-module.exports = {
-    createUser
 }
 
 //pathway for getting all users
@@ -27,7 +25,7 @@ const getAllUsers = async (req, res) => {
         });
         return res.status(200).json({ users });
     } catch (error) {
-        return res.status(500).send(error.message);
+        return res.status(500).json({ error: error.message });
     }
 }
 
@@ -54,8 +52,9 @@ const getUserById = async (req, res) => {
 
 //pathway for updating user by id
 const updateUser = async (req, res) => {
+    const { id } = req.params;
     try {
-        const { id } = req.params;
+        
         const [updated] = await User.update(req.body, {
             where: { id: id }
         });
@@ -68,20 +67,39 @@ const updateUser = async (req, res) => {
         return res.status(500).send(error.message);
     }
 };
+/*
+app.put('/users/:uuid', async (req, res) => {
+  const uuid = req.params.uuid
+  const { name, email, role } = req.body
+  try {
+    const user = await User.findOne({ where: { uuid } })
+
+    user.name = name
+    user.email = email
+    user.role = role
+
+    await user.save()
+
+    return res.json(user)
+  } catch (err) {
+    console.log(err)
+    return res.status(500).json({ error: 'Something went wrong' })
+  }
+})
+*/
 
 //pathway for deleting user by id
 const deleteUser = async (req, res) => {
+    const { id } = req.params;
     try {
-        const { id } = req.params;
-        const deleted = await User.destroy({
-            where: { id: id }
-        });
-        if (deleted) {
-            return res.status(204).send("User deleted");
-        }
-        throw new Error("User not found");
-    } catch (error) {
-        return res.status(500).send(error.message);
+            const user = await User.findOne({ where: { id } });
+            if (user) {
+                await user.destroy();
+                return res.status(204).json({ message: 'User deleted!' })
+            }
+            throw new Error("User not found");
+        } catch (error) {
+        return res.status(500).json({ error: error.message });
     }
 };
 

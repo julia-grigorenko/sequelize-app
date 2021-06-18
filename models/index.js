@@ -31,6 +31,7 @@ Object.keys(db).forEach(modelName => {
   }
 });
 
+sequelize.env = env;
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
